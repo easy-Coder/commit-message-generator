@@ -1,15 +1,13 @@
 /// A class that holds the summary data for git diff and git log
 class GitSummary {
-  final Map<String, int> diffStats;
+  final String diffStats;
   final List<Map<String, dynamic>> logEntries;
 
   GitSummary({required this.diffStats, required this.logEntries});
 
   @override
   String toString() {
-    final diffSummary = diffStats.entries
-        .map((entry) => '${entry.key}: ${entry.value}')
-        .join('\n');
+    final diffSummary = diffStats;
 
     final logSummary = logEntries
         .map(

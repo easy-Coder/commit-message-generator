@@ -16,7 +16,7 @@ Future<GitSummary> getCurrentDirectoryGitSummary({int logCount = 5}) async {
   // Get git diff stats for working directory changes
   final diffResult = await Process.run('git', [
     'diff',
-    '--stat',
+    '--cached',
   ], runInShell: true);
 
   if (diffResult.exitCode != 0) {
@@ -24,7 +24,7 @@ Future<GitSummary> getCurrentDirectoryGitSummary({int logCount = 5}) async {
   }
 
   // Parse diff stats
-  final diffStats = _parseDiffStats(diffResult.stdout.toString());
+  final diffStats = diffResult.stdout.toString();
 
   // Get git log
   final logResult = await Process.run('git', [
@@ -43,28 +43,6 @@ Future<GitSummary> getCurrentDirectoryGitSummary({int logCount = 5}) async {
   final logEntries = _parseLogEntries(logResult.stdout.toString());
 
   return GitSummary(diffStats: diffStats, logEntries: logEntries);
-}
-
-/// Helper method to parse git diff --stat output
-Map<String, int> _parseDiffStats(String diffOutput) {
-  final result = <String, int>{
-    'insertions': 0,
-    'deletions': 0,
-    'files_changed': 0,
-  };
-
-  // Parse the summary line at the end of diff --stat
-  final summaryMatch = RegExp(
-    r'(\d+) files? changed(?:, (\d+) insertions?\(\+\))?(?:, (\d+) deletions?\(-\))?',
-  ).firstMatch(diffOutput);
-
-  if (summaryMatch != null) {
-    result['files_changed'] = int.parse(summaryMatch.group(1) ?? '0');
-    result['insertions'] = int.parse(summaryMatch.group(2) ?? '0');
-    result['deletions'] = int.parse(summaryMatch.group(3) ?? '0');
-  }
-
-  return result;
 }
 
 /// Helper method to parse git log output

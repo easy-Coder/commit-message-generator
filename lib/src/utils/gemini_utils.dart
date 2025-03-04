@@ -38,9 +38,7 @@ Generate 3 concise, descriptive commit messages based on the following git diff 
 Format each suggestion as a numbered list.
 
 Git Diff Stats:
-- Files changed: ${diffStats['files_changed']}
-- Insertions: ${diffStats['insertions']}
-- Deletions: ${diffStats['deletions']}
+- $diffStats
 
 Recent commits:
 $recentCommits
