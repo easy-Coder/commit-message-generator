@@ -14,10 +14,11 @@ Future<String> chooseCommitMessage(GitSummary gitSummary) async {
     }
     print('${suggestions.length + 1}. Write my own message');
     print('${suggestions.length + 2}. Regenerate a new message');
-    print('${suggestions.length + 3}. Press enter to exit');
 
     // Get user choice
-    stdout.write('\nChoose a commit message (1-${suggestions.length + 1}): ');
+    stdout.write(
+      '\nChoose a commit message (1-${suggestions.length + 2}) or Press enter to exit: ',
+    );
     final input = stdin.readLineSync();
     final choice = int.tryParse(input ?? '') ?? 0;
 
