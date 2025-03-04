@@ -44,7 +44,8 @@ void main() async {
     final summary = await getCurrentDirectoryGitSummary();
 
     // Get and choose commit message
-    final commitMessage = await chooseCommitMessage(summary);
+    final commitMessage = await chooseCommitMessage(summary)
+      ..replaceAll(RegExp(r'\*'), '');
 
     if (commitMessage.isEmpty) {
       exit(0);
