@@ -70,7 +70,7 @@ Future<List<String>> _callGeminiApi(String prompt, String apiKey) async {
       },
     ],
     "generationConfig": {
-      "temperature": 0.7,
+      "temperature": 0.1,
       "topK": 40,
       "topP": 0.95,
       "maxOutputTokens": 1024,
