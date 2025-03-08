@@ -45,10 +45,12 @@ $recentCommits
 
 The commit messages should follow best practices:
 - Start with a verb in imperative form (e.g., "Add", "Fix", "Update")
+- Adhere to 'Conventional Commits' best practices
 - Be concise (50-72 characters for the first line)
 - Describe WHAT changed and WHY, not HOW
 - Be specific rather than vague
-- Only put what should be the message of the commit and nothing else.
+- Only put what should be the message of the commit and nothing else
+- Don't add asteriks(*) to messages
 
 Please generate 3 different commit message suggestions.
 ''';
