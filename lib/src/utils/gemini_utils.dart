@@ -57,7 +57,7 @@ Please generate 3 different commit message suggestions.
 /// Calls Gemini API to generate commit message suggestions
 Future<List<String>> _callGeminiApi(String prompt, String apiKey) async {
   final url =
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$apiKey';
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=$apiKey';
 
   final requestBody = jsonEncode({
     "contents": [
