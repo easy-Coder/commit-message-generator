@@ -124,5 +124,7 @@ List<String> _parseCommitSuggestions(String responseText) {
     return [responseText];
   }
 
-  return suggestions;
+  return suggestions
+      .map((suggestion) => suggestion.replaceAll(RegExp(r'\*'), ''))
+      .toList();
 }
